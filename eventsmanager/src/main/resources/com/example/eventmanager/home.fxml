@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eventmanager.homeController">
+   <children>
+      <Pane prefHeight="141.0" prefWidth="690.0" style="-fx-background-color: #dd5db7f6;">
+         <children>
+            <ImageView fitHeight="50.0" fitWidth="66.0" layoutX="25.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons8-se-80.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="87.0" layoutY="55.0" prefHeight="30.0" prefWidth="281.0" text="SmartEventManager" textFill="#f5f5f5">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <GridPane layoutX="166.0" layoutY="214.0" prefHeight="271.0" prefWidth="388.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="190.0" minWidth="10.0" prefWidth="190.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="19.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="179.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="191.0" minHeight="10.0" prefHeight="133.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="152.0" minHeight="7.0" prefHeight="20.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="152.0" minHeight="0.0" prefHeight="115.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button id="gridelt" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#listAllEvents" prefHeight="158.0" prefWidth="194.0" style="-fx-background-color: #eee7ecf6;" stylesheets="@../mystyles.css" text="List all events">
+               <graphic>
+                  <ImageView fitHeight="85.0" fitWidth="163.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons8-events-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="gridelt" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#changeEvent" prefHeight="136.0" prefWidth="170.0" style="-fx-background-color: #eee7ecf6;" stylesheets="@../mystyles.css" text="Modify/Cancel/Join" GridPane.columnIndex="2">
+               <graphic>
+                  <ImageView fitHeight="107.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons8-cancel-100.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="gridelt" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#newConference" prefHeight="116.0" prefWidth="188.0" style="-fx-background-color: #eee7ecf6;" stylesheets="@../mystyles.css" text="Create Conference" GridPane.rowIndex="2">
+               <graphic>
+                  <ImageView fitHeight="64.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons8-conference-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="gridelt" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#newConcert" prefHeight="110.0" prefWidth="167.0" style="-fx-background-color: #eee7ecf6;" stylesheets="@../mystyles.css" text="Create Concert" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <graphic>
+                  <ImageView fitHeight="62.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons8-concert-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </GridPane>
+      <Label layoutX="37.0" layoutY="163.0" prefHeight="16.0" prefWidth="617.0" text="Hello, what will you like to do today?" />
+      <Label fx:id="deleteParid" layoutX="389.0" layoutY="179.0" onMouseEntered="#deletePart" prefHeight="16.0" prefWidth="296.0" text="Would you like to withdraw from an event?" textFill="#dd0000" underline="true" />
+   </children>
+</AnchorPane>

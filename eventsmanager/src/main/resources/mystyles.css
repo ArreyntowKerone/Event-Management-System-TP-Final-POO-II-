@@ -1,0 +1,6 @@
+#gridelt:hover{
+    background-color: rgb(40, 172, 216);
+    color: darkblue;
+    font-weight: bold;
+    cursor: pointer;
+}
