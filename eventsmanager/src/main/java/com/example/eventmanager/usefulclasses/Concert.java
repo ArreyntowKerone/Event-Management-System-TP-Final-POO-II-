@@ -1,19 +1,26 @@
 package com.example.eventmanager.usefulclasses;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.example.eventmanager.usefulclasses.exceptions.CapaciteMaxAtteinteException;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
+//@JsonTypeName("Concert")
 public class Concert extends Evenement {
     private String artiste;
     private String genreMusical;
-    private List<Participant> participants;
+    private List<Participant> participants = new ArrayList<>();
     //Getters and setters
     public String getArtiste() {
         return artiste;
     }
 
+    public Concert() {
+        
+    }
     public Concert(String nom, LocalDateTime date, String lieu, int capaciteMax) {
         super(nom, date, lieu, capaciteMax);
     }
@@ -52,7 +59,7 @@ public class Concert extends Evenement {
         return participants;
     }
 
-    void ajouterParticipant(Participant participant) throws CapaciteMaxAtteinteException{
+    public void ajouterParticipant(Participant participant) throws CapaciteMaxAtteinteException{
         //implementation of the method
         List<Participant> currentParticipants = getParticipants();
         if (currentParticipants.size() >= getCapaciteMax()) {

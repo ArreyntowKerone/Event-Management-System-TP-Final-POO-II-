@@ -42,45 +42,45 @@ class JsonDataManagerTest {
         testParticipant = new Participant("John", "john.doe@example.com");
 
         // Clear any existing data
-        GestionEvenements.getEvenements().clear();
-        GestionEvenements.getPersonnes().clear();
+        GestionEvenements.getInstance().getEvenements().clear();
+        GestionEvenements.getInstance().getPersonnes().clear();
     }
 
     @AfterEach
     void tearDown() {
         // Clean up after each test
-        GestionEvenements.getEvenements().clear();
-        GestionEvenements.getPersonnes().clear();
+        GestionEvenements.getInstance().getEvenements().clear();
+        GestionEvenements.getInstance().getPersonnes().clear();
     }
 
     @Test
     void testSaveAndLoadEvents() throws IOException {
         // Add test data to the management system
-        GestionEvenements.getEvenements().put("event1", testEvent);
-        GestionEvenements.getPersonnes().put(testParticipant, testEvent);
+        GestionEvenements.getInstance().getEvenements().put("event1", testEvent);
+        GestionEvenements.getInstance().getPersonnes().put(testParticipant, testEvent);
 
         // Save to JSON files
         JsonDataManager.saveEvents();
 
         // Clear the in-memory data
-        GestionEvenements.getEvenements().clear();
-        GestionEvenements.getPersonnes().clear();
+        GestionEvenements.getInstance().getEvenements().clear();
+        GestionEvenements.getInstance().getPersonnes().clear();
 
         // Load from JSON files
         JsonDataManager.loadEvents();
 
         // Verify the data was correctly saved and loaded
-        assertEquals(1, GestionEvenements.getEvenements().size());
-        assertEquals(1, GestionEvenements.getPersonnes().size());
-        assertTrue(GestionEvenements.getEvenements().containsKey("event1"));
-        assertTrue(GestionEvenements.getPersonnes().containsKey(testParticipant));
+        assertEquals(1, GestionEvenements.getInstance().getEvenements().size());
+        assertEquals(1, GestionEvenements.getInstance().getPersonnes().size());
+        assertTrue(GestionEvenements.getInstance().getEvenements().containsKey("event1"));
+        assertTrue(GestionEvenements.getInstance().getPersonnes().containsKey(testParticipant));
     }
 
     @Test
     void testSaveEventsWithEmptyData() throws IOException {
         // Ensure collections are empty
-        GestionEvenements.getEvenements().clear();
-        GestionEvenements.getPersonnes().clear();
+        GestionEvenements.getInstance().getEvenements().clear();
+        GestionEvenements.getInstance().getPersonnes().clear();
 
         // Should not throw exceptions with empty data
         assertDoesNotThrow(() -> JsonDataManager.saveEvents());
@@ -100,8 +100,8 @@ class JsonDataManagerTest {
         assertDoesNotThrow(() -> JsonDataManager.loadEvents());
 
         // Verify collections remain empty
-        assertTrue(GestionEvenements.getEvenements().isEmpty());
-        assertTrue(GestionEvenements.getPersonnes().isEmpty());
+        assertTrue(GestionEvenements.getInstance().getEvenements().isEmpty());
+        assertTrue(GestionEvenements.getInstance().getPersonnes().isEmpty());
     }
 
     @Test
@@ -111,7 +111,7 @@ class JsonDataManagerTest {
         JsonDataManager.PARTICIPANTS_FILE = "/invalid/path/participants.json";
 
         // Add some test data
-        GestionEvenements.getEvenements().put("event1", testEvent);
+        GestionEvenements.getInstance().getEvenements().put("event1", testEvent);
 
         // Should handle the IOException gracefully (currently just prints to console)
         assertDoesNotThrow(() -> JsonDataManager.saveEvents());

@@ -1,7 +1,7 @@
 package com.example.eventmanager.usefulclasses;
 
 import java.time.LocalDateTime;
-import java.util.List;
+
 
 public class EventFactory {
     public enum EventType {
@@ -26,7 +26,7 @@ public class EventFactory {
         conference.setTheme(theme);
         conference.setId();
         Conference.ajouterIntervenant(intervenant);
-        GestionEvenements.ajouterEvenement(nom, conference);
+        GestionEvenements.getInstance().ajouterEvenement(nom, conference);
         return conference;
     } 
     public static Concert createConcert(String nom, LocalDateTime date, String lieu, int capaciteMax, String artiste, String genreMusical) {
@@ -34,7 +34,7 @@ public class EventFactory {
         concert.setArtiste(artiste);
         concert.setGenreMusical(genreMusical);
         concert.setId();
-        GestionEvenements.ajouterEvenement(nom, concert);
+        GestionEvenements.getInstance().ajouterEvenement(nom, concert);
         return concert;
     }
 

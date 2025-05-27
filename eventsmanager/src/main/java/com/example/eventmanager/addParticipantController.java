@@ -40,9 +40,9 @@ public class addParticipantController {
             String nom = nomparticipanttf.getText();
             String email = emailpartf.getText();
             Participant par = new Participant(nom, email);
-            Conference eve =(Conference) GestionEvenements.rechercherEvenement(eventlb.getText());
+            Conference eve =(Conference) GestionEvenements.getInstance().rechercherEvenement(eventlb.getText());
             eve.ajouterParticipant(par);
-            GestionEvenements.ajouterPersonne(par, GestionEvenements.rechercherEvenement(eventlb.getText()));
+            GestionEvenements.getInstance().ajouterPersonne(par, GestionEvenements.getInstance().rechercherEvenement(eventlb.getText()));
             JsonDataManager.saveEvents();
         } catch (CapaciteMaxAtteinteException e) {
             // Handle the exception (e.g., show an error message)

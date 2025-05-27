@@ -29,8 +29,8 @@ public class deleteParticipantController {
             return;
         }
         Participant participant = new Participant(nomParticipant, emailParticipant);
-        eventlb.setText("Your are about to delete " + nomParticipant + " from " +GestionEvenements.getEvenementParticipant(participant));
-        GestionEvenements.supprimerParticipant(nomParticipant);
+        eventlb.setText("Your are about to delete " + nomParticipant + " from " +GestionEvenements.getInstance().getEvenementParticipant(participant));
+        GestionEvenements.getInstance().supprimerParticipant(nomParticipant);
         
     }
 

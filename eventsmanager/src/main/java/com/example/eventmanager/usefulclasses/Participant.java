@@ -4,13 +4,22 @@ package com.example.eventmanager.usefulclasses;
 
 import javax.mail.*;
 import javax.mail.internet.*;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import java.util.Properties;
 
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Participant implements EventObserver, NotificationService{
     private String id;
     private String nom;
     private String email;
 
+    public Participant(String nom) {
+        this.nom = nom;
+    }
     //Getters and setters
     public String getId() {
         return id;

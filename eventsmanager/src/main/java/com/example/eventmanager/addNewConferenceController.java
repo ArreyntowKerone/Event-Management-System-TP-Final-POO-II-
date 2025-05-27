@@ -49,7 +49,7 @@ public class addNewConferenceController {
         String intervenant = intervenantconftf.getText();
         Intervenant inter = new Intervenant(intervenant);
         try {
-            if(GestionEvenements.rechercherEvenement(nom) == null){
+            if(GestionEvenements.getInstance().rechercherEvenement(nom) == null){
                 Conference.ajouterIntervenant(inter);
                 // Create a new Conference object and add it to the event manager
                 EventFactory.createConference(nom, date, lieu, capaciteMax, theme, inter);

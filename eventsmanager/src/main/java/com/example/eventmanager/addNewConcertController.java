@@ -43,7 +43,7 @@ public class addNewConcertController {
         int capaciteMax = Integer.parseInt(capacitemaxconcerttf.getText());
         String genre = genremusicaltf.getText();
         String artiste = artisteconcerttf.getText();
-        if(GestionEvenements.rechercherEvenement(nom) == null){
+        if(GestionEvenements.getInstance().rechercherEvenement(nom) == null){
             EventFactory.createConcert(nom, date, lieu, capaciteMax, artiste, genre);
             JsonDataManager.saveEvents();
         }else{

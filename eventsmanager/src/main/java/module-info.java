@@ -16,4 +16,5 @@ module com.example.eventmanager {
     opens com.example.eventmanager to javafx.fxml;
     exports com.example.eventmanager;
     opens com.example.eventmanager.usefulclasses; // For reflection
+    exports com.example.eventmanager.usefulclasses.junittests;
 }

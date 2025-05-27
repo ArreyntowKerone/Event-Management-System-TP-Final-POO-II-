@@ -31,7 +31,7 @@ public class searchtoactionController {
             searchresult.setText("Please enter an event name to search.");
             return;
         }else{
-            Evenement result = (Concert) GestionEvenements.rechercherEvenement(eventname);
+            Evenement result = (Concert) GestionEvenements.getInstance().rechercherEvenement(eventname);
             if (result != null) {
                 searchresult.setText("Canceling Event: " + result.toString());
                 GestionEvenements.getInstance().supprimerEvenement(eventname);
@@ -51,7 +51,7 @@ public class searchtoactionController {
             searchresult.setText("Please enter a valid event name to modify");
             return;
         }else{
-            Concert result = (Concert) GestionEvenements.rechercherEvenement(eventname);
+            Concert result = (Concert) GestionEvenements.getInstance().rechercherEvenement(eventname);
             if (result != null) {
                 searchresult.setText("Modifying the Concert: " + result.toString());
                 try{
@@ -72,7 +72,7 @@ public class searchtoactionController {
                     controller.getCapacitemaxconcerttf().setText(String.valueOf(result.getCapaciteMax()));
                     controller.getArtisteconcerttf().setText(result.getArtiste());
                     controller.getGenremusicaltf().setText(result.getGenreMusical());
-                    GestionEvenements.supprimerEvenement(eventname);
+                    GestionEvenements.getInstance().supprimerEvenement(eventname);
                     result.notifyObservers(result, "MODIFIED");
                 }catch(Exception e){
                     System.out.println(e.getMessage());
@@ -89,7 +89,7 @@ public class searchtoactionController {
             searchresult.setText("Please enter a valid event name to modify");
             return;
         }else{
-            Conference result = (Conference) GestionEvenements.rechercherEvenement(eventname);
+            Conference result = (Conference) GestionEvenements.getInstance().rechercherEvenement(eventname);
             if (result != null) {
                 searchresult.setText("Modifying the Conference: " + result.toString());
                 try{
@@ -109,7 +109,7 @@ public class searchtoactionController {
                     controller.getDateconftf().setText(String.valueOf(result.getDate()));
                     controller.getCapacitemaxconftf().setText(String.valueOf(result.getCapaciteMax()));
                     controller.getThemeconftf().setText(result.getTheme());
-                    GestionEvenements.supprimerEvenement(eventname);
+                    GestionEvenements.getInstance().supprimerEvenement(eventname);
                     result.notifyObservers(result, "MODIFIED");
                 }catch(Exception e){
                     System.out.println(e.getMessage());
@@ -127,7 +127,7 @@ public class searchtoactionController {
             searchresult.setText("Please enter an event name to join");
             return;
         }else{
-            Evenement result = GestionEvenements.rechercherEvenement(eventname);
+            Evenement result = GestionEvenements.getInstance().rechercherEvenement(eventname);
             if (result != null) {
                 searchresult.setText("Trying to join: " + result.toString());
                 try{

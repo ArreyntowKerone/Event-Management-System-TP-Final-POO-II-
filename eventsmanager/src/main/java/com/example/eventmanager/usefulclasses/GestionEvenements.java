@@ -12,12 +12,11 @@ import javafx.scene.control.TextArea;
 public class GestionEvenements {
     //Singleton means we need to make sure only one instance of the class exists
     private static GestionEvenements instance;
-    private static Map<String, Evenement> evenements;
+    private static Map<String, Evenement> evenements = new HashMap<>();
     private static Map<Participant, Evenement> personnes = new HashMap<>();
 
     //private constructor to prevent instantiation
     private GestionEvenements(){
-        evenements = new HashMap<>();
         JsonDataManager.loadEvents(); 
     }
 
@@ -29,42 +28,42 @@ public class GestionEvenements {
         return instance;
     }
 
-    public static Map<String, Evenement> getEvenements() {
+    public Map<String, Evenement> getEvenements() {
         return evenements;
     }
 
-    public static Map<Participant, Evenement> getPersonnes() {
+    public Map<Participant, Evenement> getPersonnes() {
         return personnes;
     }
 
     //Relevant methods
-    public static void ajouterEvenement(String nom, Evenement evenement){
+    public void ajouterEvenement(String nom, Evenement evenement){
         evenements.put(nom, evenement);
         JsonDataManager.saveEvents(); 
     }
 
-    public static Evenement getEvenementParticipant(Participant participant) {
+    public Evenement getEvenementParticipant(Participant participant) {
         return personnes.get(participant);
     }
 
-    public static void supprimerEvenement(String nom){
+    public void supprimerEvenement(String nom){
         evenements.remove(nom);
         JsonDataManager.saveEvents();
     }
 
-    public static void supprimerParticipant(String nom){
+    public void supprimerParticipant(String nom){
         personnes.remove(nom);
         JsonDataManager.saveEvents();
     }
 
-    public static Evenement rechercherEvenement(String nom){
+    public Evenement rechercherEvenement(String nom){
         if (evenements == null) {
             throw new IllegalStateException("evenements map is not initialized!");
         }
         return evenements.get(nom);
     }
 
-    public static void ajouterPersonne(Participant p, Evenement event){
+    public void ajouterPersonne(Participant p, Evenement event){
         personnes.put(p, event);
         JsonDataManager.saveEvents();
     }

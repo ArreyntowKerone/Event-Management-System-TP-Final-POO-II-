@@ -1,10 +1,11 @@
 package com.example.eventmanager.usefulclasses.serializers;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.example.eventmanager.usefulclasses.*;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
@@ -22,11 +23,11 @@ public class JsonDataManager {
         mapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
         
         // Configure polymorphic type handling
-        mapper.activateDefaultTyping(
+        /*mapper.activateDefaultTyping(
             mapper.getPolymorphicTypeValidator(),
             ObjectMapper.DefaultTyping.NON_FINAL,
             JsonTypeInfo.As.PROPERTY
-        );
+        );*/
         
         return mapper;
     }
@@ -93,7 +94,7 @@ public class JsonDataManager {
 
     private static void handleSerializationError(String message, Exception e) {
         System.err.println(message + ": " + e.getMessage());
-        e.printStackTrace();
+        System.out.println(e.getMessage());
         // Consider adding application-specific error handling here
     }
 }

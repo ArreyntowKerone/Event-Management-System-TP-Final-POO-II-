@@ -6,11 +6,14 @@ import com.fasterxml.jackson.annotation.*;
 import com.example.eventmanager.usefulclasses.exceptions.CapaciteMaxAtteinteException;
 
 @JsonTypeInfo(
-    use = JsonTypeInfo.Id.CLASS,
+    use = JsonTypeInfo.Id.NAME,
     include = JsonTypeInfo.As.PROPERTY,
-    property = "@class"
+    property = "type"
 )
-@JsonInclude(JsonInclude.Include.NON_NULL) // Ignore les champs null
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = Conference.class, name = "conference"),
+    @JsonSubTypes.Type(value = Concert.class, name = "concert")
+})
 public abstract class Evenement extends Observable{
     private String id;
     public Evenement() {

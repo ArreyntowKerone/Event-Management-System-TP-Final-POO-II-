@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import com.example.eventmanager.usefulclasses.GestionEvenements;
 import com.example.eventmanager.usefulclasses.serializers.JsonDataManager;
 
 /**

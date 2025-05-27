@@ -5,14 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.eventmanager.usefulclasses.exceptions.CapaciteMaxAtteinteException;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
+//@JsonTypeName("Conference")
 public class Conference extends Evenement {
     private String theme;
     private static List<Intervenant> presentateurs = new ArrayList<>();
     private static List<Participant> participants = new ArrayList<>();
 
 
-    
+    public Conference() {
+        
+    }
 
     public static List<Participant> getParticipants() {
         return participants;
