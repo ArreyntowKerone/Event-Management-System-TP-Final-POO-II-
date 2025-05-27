@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.eventmanager.usefulclasses.exceptions.CapaciteMaxAtteinteException;
-import com.fasterxml.jackson.annotation.JsonTypeName;
+//import com.fasterxml.jackson.annotation.JsonTypeName;
 
 //@JsonTypeName("Conference")
 public class Conference extends Evenement {
@@ -49,7 +49,7 @@ public class Conference extends Evenement {
     //Conference related methods
     public void ajouterParticipant(Participant participant) throws CapaciteMaxAtteinteException{
         //implementation of the method
-        List<Participant> currentParticipants = this.getParticipants();
+        List<Participant> currentParticipants = Conference.getParticipants();
         if (currentParticipants.size() >= getCapaciteMax()) {
             throw new CapaciteMaxAtteinteException(getNom(), getCapaciteMax());
 

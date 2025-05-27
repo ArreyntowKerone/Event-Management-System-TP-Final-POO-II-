@@ -1,1 +1,19 @@
-{ }
+{
+  "14fcb857-39ae-4cb4-b0bf-ae6fa1d86114|Jeremy |jeremy@gmail.com" : {
+    "id" : "a266cada-5393-4c3c-94d6-5b97214561f8",
+    "nom" : "El Germano",
+    "date" : "2025-10-13 17:00",
+    "lieu" : "New Jersey",
+    "capaciteMax" : 500,
+    "artiste" : "La Mano 19",
+    "genreMusical" : "Rap"
+  },
+  "4f0d6688-3c30-4635-8709-bf04a2524cca|John|johndoe@yahoo.com" : {
+    "id" : "3260f8b2-4787-475d-9f2f-55b759fa70c3",
+    "nom" : "To delete",
+    "date" : "2025-02-14 18:00",
+    "lieu" : "Bastos",
+    "capaciteMax" : 100,
+    "theme" : "Delete operation"
+  }
+}

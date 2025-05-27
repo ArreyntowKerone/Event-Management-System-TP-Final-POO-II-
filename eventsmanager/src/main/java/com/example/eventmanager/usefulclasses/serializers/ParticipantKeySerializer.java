@@ -7,9 +7,12 @@ import com.fasterxml.jackson.databind.ser.std.StdKeySerializer;
 
 import java.io.IOException;
 
+import com.fasterxml.jackson.core.JsonGenerator;
+
 public class ParticipantKeySerializer extends JsonSerializer<Participant> {
     @Override
-    public void serialize(Participant key, com.fasterxml.jackson.core.JsonGenerator gen, SerializerProvider serializers) throws IOException {
-        gen.writeFieldName(key.getId()); // or use a toString() or custom string representation
+    public void serialize(Participant key, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+        String compositeKey = key.getId() + "|" + key.getNom() + "|" + key.getEmail();
+        gen.writeFieldName(compositeKey);
     }
 }

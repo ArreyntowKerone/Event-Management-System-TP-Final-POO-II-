@@ -1,11 +1,52 @@
 {
-  "Tp final poo II" : {
-    "type" : "conference",
-    "id" : "5bc0eabd-666c-4581-aa6d-6949e5a11447",
-    "nom" : "Tp final poo II",
-    "date" : "2025-05-27 13:30",
+  "Mindomimbong" : {
+    "id" : "598dcde0-a9b9-4248-baa9-ece151e45bf5",
+    "nom" : "Mindomimbong",
+    "date" : "2025-02-28 19:00",
+    "lieu" : "white house street",
+    "capaciteMax" : 150,
+    "theme" : "Baton de manioc"
+  },
+  "TEDX" : {
+    "id" : "4d69f7d6-b9c0-4249-b09b-904580eb609f",
+    "nom" : "TEDX",
+    "date" : "2025-05-29 16:00",
     "lieu" : "Melen",
-    "capaciteMax" : 140,
-    "theme" : "Presentations projet"
+    "capaciteMax" : 100,
+    "theme" : "Overcoming procrastination"
+  },
+  "Prototype" : {
+    "id" : "1d91a156-561c-4443-980d-6de589f5e7c5",
+    "nom" : "Prototype",
+    "date" : "2025-04-21 15:14",
+    "lieu" : "France-Paris",
+    "capaciteMax" : 250,
+    "artiste" : "Genezio",
+    "genreMusical" : "Rap"
+  },
+  "Seraphin" : {
+    "id" : "5435c992-722b-470b-bd71-44aadf445e73",
+    "nom" : "Seraphin",
+    "date" : "2025-05-25 13:00",
+    "lieu" : "Shibuya",
+    "capaciteMax" : 1000,
+    "theme" : "Rumbling"
+  },
+  "Change" : {
+    "id" : "6dfd3bb5-1710-4337-9e4f-bd922151d7e9",
+    "nom" : "Change",
+    "date" : "2025-11-16 19:50",
+    "lieu" : "Manchester",
+    "capaciteMax" : 350,
+    "artiste" : "Lufey",
+    "genreMusical" : "Soul-RB"
+  },
+  "Introspection" : {
+    "id" : "782d2835-124e-4770-9a9e-93b5e6b6ce34",
+    "nom" : "Introspection",
+    "date" : "2025-08-28 14:00",
+    "lieu" : "Minesota",
+    "capaciteMax" : 200,
+    "theme" : "Healthy living"
   }
 }

@@ -31,10 +31,11 @@ public class searchtoactionController {
             searchresult.setText("Please enter an event name to search.");
             return;
         }else{
-            Evenement result = (Concert) GestionEvenements.getInstance().rechercherEvenement(eventname);
+            Evenement result = GestionEvenements.getInstance().rechercherEvenement(eventname);
             if (result != null) {
-                searchresult.setText("Canceling Event: " + result.toString());
+                searchresult.setText("Canceling Event: " + result.getNom() + " at " + result.getLieu());
                 GestionEvenements.getInstance().supprimerEvenement(eventname);
+                GestionEvenements.getInstance().supprimerDansParticipantsJson(eventname); // Remove from participants JSON
                 result.notifyObservers(result, "CANCELLED"); // Notify observers about the cancellation
                 JsonDataManager.saveEvents(); // Save changes to JSON file
                 
@@ -53,7 +54,7 @@ public class searchtoactionController {
         }else{
             Concert result = (Concert) GestionEvenements.getInstance().rechercherEvenement(eventname);
             if (result != null) {
-                searchresult.setText("Modifying the Concert: " + result.toString());
+                searchresult.setText("Modifying the Concert: " + result.getNom() + " at " + result.getLieu());
                 try{
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eventmanager/addConcert.fxml"));
                     Parent root = loader.load();
@@ -91,7 +92,7 @@ public class searchtoactionController {
         }else{
             Conference result = (Conference) GestionEvenements.getInstance().rechercherEvenement(eventname);
             if (result != null) {
-                searchresult.setText("Modifying the Conference: " + result.toString());
+                searchresult.setText("Modifying the Conference: " + result.getNom() + " at " + result.getLieu() + " on " + result.getDate());
                 try{
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eventmanager/addConference.fxml"));
                     Parent root = loader.load();

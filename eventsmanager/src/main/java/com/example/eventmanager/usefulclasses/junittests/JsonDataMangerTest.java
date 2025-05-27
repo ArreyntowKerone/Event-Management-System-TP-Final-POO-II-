@@ -4,7 +4,7 @@ import com.example.eventmanager.usefulclasses.Evenement;
 import com.example.eventmanager.usefulclasses.EventFactory;
 import com.example.eventmanager.usefulclasses.GestionEvenements;
 import com.example.eventmanager.usefulclasses.Participant;
-import com.fasterxml.jackson.core.JsonProcessingException;
+//import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.example.eventmanager.usefulclasses.serializers.JsonDataManager;
@@ -26,8 +26,8 @@ class JsonDataManagerTest {
 
     @TempDir
     Path tempDir;
-    private File testEventsFile;
-    private File testParticipantsFile;
+    //private File testEventsFile;
+    //private File testParticipantsFile;
     private Evenement testEvent;
     private Participant testParticipant;
 

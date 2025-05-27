@@ -1,6 +1,6 @@
 package com.example.eventmanager.usefulclasses.serializers;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+//import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.example.eventmanager.usefulclasses.*;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.*;
@@ -18,19 +18,25 @@ public class JsonDataManager {
 
     private static ObjectMapper createConfiguredMapper() {
         ObjectMapper mapper = new ObjectMapper();
+    
+        // Register modules
         mapper.registerModule(new JavaTimeModule());
+        mapper.registerModule(new ParticipantKeyModule()); //Register your custom serializer/deserializer here
+    
+        // Pretty print
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
-        mapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
-        
-        // Configure polymorphic type handling
-        /*mapper.activateDefaultTyping(
-            mapper.getPolymorphicTypeValidator(),
-            ObjectMapper.DefaultTyping.NON_FINAL,
-            JsonTypeInfo.As.PROPERTY
-        );*/
-        
+        //mapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
+    
+        // Optionally: handle polymorphism if you're using @JsonTypeInfo in Evenement
+        //mapper.activateDefaultTyping(
+        //    mapper.getPolymorphicTypeValidator(),
+        //    ObjectMapper.DefaultTyping.NON_FINAL,
+        //    JsonTypeInfo.As.PROPERTY
+        //);
+    
         return mapper;
     }
+    
 
     public static void saveEvents() {
         try {
@@ -56,10 +62,9 @@ public class JsonDataManager {
         try {
             // Load events with type information
             Map<String, Evenement> evenements = loadFromFile(
-                EVENEMENTS_FILE,
-                new TypeReference<Map<String, Evenement>>() {}
-            );
-            
+            EVENEMENTS_FILE,
+            new TypeReference<Map<String, Evenement>>() {}
+        );
             Map<Participant, Evenement> participants = loadFromFile(
                 PARTICIPANTS_FILE,
                 new TypeReference<Map<Participant, Evenement>>() {}

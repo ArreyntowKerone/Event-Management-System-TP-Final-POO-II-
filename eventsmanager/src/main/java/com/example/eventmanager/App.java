@@ -6,9 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+//import java.io.IOException;
 
-import com.example.eventmanager.usefulclasses.GestionEvenements;
+//import com.example.eventmanager.usefulclasses.GestionEvenements;
 import com.example.eventmanager.usefulclasses.serializers.JsonDataManager;
 
 /**
@@ -19,6 +19,11 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         try{
+            try {
+                JsonDataManager.loadEvents();
+            } catch (Exception e) {
+                System.out.println("Error loading events: " + e.getMessage());
+            }
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eventmanager/login.fxml"));
             Parent root = loader.load();
             
@@ -35,7 +40,6 @@ public class App extends Application {
     }
     public static void main(String[] args) throws Exception {
         // Load events and participants from JSON files
-        JsonDataManager.loadEvents();
         launch(args);
         
     }

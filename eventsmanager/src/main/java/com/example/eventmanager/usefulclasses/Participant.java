@@ -5,20 +5,30 @@ package com.example.eventmanager.usefulclasses;
 import javax.mail.*;
 import javax.mail.internet.*;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+//import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import java.util.Properties;
+import java.util.UUID;
 
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class")
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonTypeInfo(
+    use = JsonTypeInfo.Id.CLASS,
+    include = JsonTypeInfo.As.PROPERTY,
+    property = "@class"
+)
 public class Participant implements EventObserver, NotificationService{
     private String id;
     private String nom;
+    public Participant(String id, String nom, String email) {
+        this.id = id;
+        this.nom = nom;
+        this.email = email;
+    }
     private String email;
 
     public Participant(String nom) {
         this.nom = nom;
+        this.setId(); 
     }
     //Getters and setters
     public String getId() {
@@ -27,9 +37,10 @@ public class Participant implements EventObserver, NotificationService{
     public Participant(String nom, String email) {
         this.nom = nom;
         this.email = email;
+        this.setId();
     }
-    public void setId(String id) {
-        this.id = id;
+    public void setId() {
+        this.id = UUID.randomUUID().toString(); // Generate a unique ID
     }
     public String getNom() {
         return nom;

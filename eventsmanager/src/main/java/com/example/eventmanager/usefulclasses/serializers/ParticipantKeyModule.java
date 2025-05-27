@@ -5,9 +5,7 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 
 public class ParticipantKeyModule extends SimpleModule {
     public ParticipantKeyModule() {
-        addKeyDeserializer(Participant.class, new ParticipantKeyDeserializer());
         addKeySerializer(Participant.class, new ParticipantKeySerializer());
+        addKeyDeserializer(Participant.class, new ParticipantKeyDeserializer());
     }
-
-    
 }

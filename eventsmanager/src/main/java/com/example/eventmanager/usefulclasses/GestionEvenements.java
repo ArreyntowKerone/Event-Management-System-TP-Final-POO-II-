@@ -12,12 +12,13 @@ import javafx.scene.control.TextArea;
 public class GestionEvenements {
     //Singleton means we need to make sure only one instance of the class exists
     private static GestionEvenements instance;
-    private static Map<String, Evenement> evenements = new HashMap<>();
-    private static Map<Participant, Evenement> personnes = new HashMap<>();
+    private static Map<String, Evenement> evenements;
+    private static Map<Participant, Evenement> personnes;
 
     //private constructor to prevent instantiation
     private GestionEvenements(){
-        JsonDataManager.loadEvents(); 
+        evenements = new HashMap<>();
+        personnes = new HashMap<>();
     }
 
     //public static method to get the single instance
@@ -37,6 +38,19 @@ public class GestionEvenements {
     }
 
     //Relevant methods
+    public Participant rechercherParticipant(String nom){
+        if (personnes == null) {
+            throw new IllegalStateException("personnes map is not initialized!");
+        }
+        
+        for (Map.Entry<Participant, Evenement> entry : personnes.entrySet()) {
+            if (entry.getKey().getNom().equalsIgnoreCase(nom)) {
+                return entry.getKey();
+            }
+        }
+        return null; // Return null if no participant found with the given name
+    }
+        
     public void ajouterEvenement(String nom, Evenement evenement){
         evenements.put(nom, evenement);
         JsonDataManager.saveEvents(); 
@@ -48,12 +62,10 @@ public class GestionEvenements {
 
     public void supprimerEvenement(String nom){
         evenements.remove(nom);
-        JsonDataManager.saveEvents();
     }
 
-    public void supprimerParticipant(String nom){
-        personnes.remove(nom);
-        JsonDataManager.saveEvents();
+    public void supprimerParticipant(Participant par){
+        personnes.remove(par);
     }
 
     public Evenement rechercherEvenement(String nom){
@@ -65,7 +77,10 @@ public class GestionEvenements {
 
     public void ajouterPersonne(Participant p, Evenement event){
         personnes.put(p, event);
-        JsonDataManager.saveEvents();
+    }
+
+    public void supprimerDansParticipantsJson(String nom){
+        evenements.entrySet().removeIf(entry -> entry.getValue().equals(nom));
     }
 
      private static String formatDateTime(LocalDateTime dateTime) {

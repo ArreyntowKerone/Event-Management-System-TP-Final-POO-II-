@@ -1,17 +1,17 @@
 package com.example.eventmanager.usefulclasses;
 
-public class Intervenant {
+public class Intervenant extends Participant{
     private String nom;
     private String email;
     private String profession;
     private int age;
 
     public Intervenant(String nom) {
-        this.nom = nom;
+        super(nom);
+        
     }
     public Intervenant(String nom, String email, String profession, int age) {
-        this.nom = nom;
-        this.email = email;
+        super(nom, email);
         this.profession = profession;
         this.age = age;
     }
