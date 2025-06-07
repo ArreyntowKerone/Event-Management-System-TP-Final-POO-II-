@@ -28,36 +28,11 @@ Built with **JavaFX** for the UI and **JSR-353 (JSON-P)** for manual JSON serial
 ### **Technical Highlights**  
 - **Manual JSON Handling** (using `javax.json`)  
 - **Separation of Concerns** (UI, Business Logic, Data Layer)  
-- **Java 8 Date/Time Support** (`LocalDateTime` serialization)  
 - **Email Notifications** (via SMTP)  
 
 ---
 
-## **📂 File Structure**  
-```plaintext
-/ems-project  
-├── src/main/java  
-│   ├── model/                  # Data classes  
-│   │   ├── Event.java          # Base event class  
-│   │   ├── Concert.java        # Concert subclass  
-│   │   ├── Conference.java     # Conference subclass  
-│   │   └── Participant.java    # Participant data  
-│   ├── persistence/  
-│   │   └── JsonDataManager.java # JSON read/write logic  
-│   ├── services/  
-│   │   └── EmailService.java   # SMTP email sender  
-│   └── MainApp.java            # JavaFX entry point  
-├── src/main/resources          # JSON data files (auto-created)  
-│   ├── concerts.json  
-│   ├── conferences.json  
-│   ├── concert_participants.json  
-│   └── conference_participants.json  
-└── pom.xml                     # Maven dependencies  
-```
-
----
-
-## **🚀 Setup & Run**  
+# **🚀 Setup & Run**  
 ### **Prerequisites**  
 - Java **17+** (for JavaFX)  
 - Maven  
